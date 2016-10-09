@@ -1,0 +1,100 @@
+Implement a class that checks whether a given number is a prime using both the Thread class
+and Runnable interface
+
+
+package session6;
+
+public class checkprime 
+{
+public static void main(String[] args)
+{
+	isprime ip=new isprime(19);
+	ip.start();	
+     
+	new isprime2(6);	
+}
+}
+
+class isprime extends Thread
+{
+	Thread t;
+	int n;
+	isprime(int num)
+	{   
+		
+	    this.n=num;
+		System.out.println("From Extends thread class");
+	}
+	
+	public void checkifprime(int num)
+	{
+		int flag=0;
+		for(int i=2;i<n;i++)
+		
+		{
+			if(n%2==0)
+			{
+				flag=1;
+				break;
+		    }		
+		}
+	   if(flag==0)	
+	   {
+		System.out.println("Number " + n + " is prime");
+		}
+	
+	    else	
+	    {
+		System.out.println(+n+" is not Prime");
+		}
+	}	
+	
+	
+	public void run()
+	{		
+		checkifprime(n);
+	}
+}
+
+class isprime2 implements Runnable
+{
+	Thread t;
+	int n;
+    isprime2(int num)
+    {
+    	t=new Thread(this);
+    	this.n=num;
+      	System.out.println("Implementing Runnable interface");
+      	t.start();
+    	
+    }
+    
+    public void Rcheckifprime(int num)
+	{
+		int flag=0;
+		for(int i=2;i<n;i++)
+		
+		{
+			if(n%2==0)
+			{
+				flag=1;
+				break;
+		    }		
+		}
+	   if(flag==0)	
+	   {
+		System.out.println(n+" Number is prime");
+	   }
+	    else	
+	    {
+		System.out.println(  +n+" is not Prime");
+	}	
+}
+	
+	public void run() {
+		
+	Rcheckifprime(n);
+		
+	}
+	
+}
